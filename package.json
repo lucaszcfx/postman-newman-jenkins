@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "api-test-production": "newman run tests/Jsonplaceholder.com.postman_collection.json"
+    "api-test-production": "newman run test/lucas.postman_collection.json"
   },
   "author": "Lucas Zirbes",
   "license": "ISC",
