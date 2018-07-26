@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "d78dc8d7-5cdc-4519-bbbd-ac169086df2c",
+		"name": "lucas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "delete",
+			"description": null,
+			"item": [
+				{
+					"name": "delete",
+					"description": "",
+					"item": [
+						{
+							"name": "get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fa09389e-3a97-452b-a985-7834378b04ce",
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"GET IDs\"] = responseCode.code === 200;",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "teste123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "lucas",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:8090/v1/protected/students/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"v1",
+										"protected",
+										"students",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bbfbacb5-2e36-4cf0-a9f9-829167209fbf",
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"whatImDoing\"] = responseCode.code === 201;",
+											"",
+											"postman.setEnvironmentVariable(\"landsLordID\", jsonData.id);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Lucas2\",\n    \"email\": \"example@email.com.br\"\t\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8090/v1/admin/students",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"v1",
+										"admin",
+										"students"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4902282d-950c-438d-bd6e-ebcc0e970cc6",
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Delete ID\"] = responseCode.code === 500;",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "teste123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "lucas",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8090/v1/admin/students/9{{landsLordID}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"v1",
+										"admin",
+										"students",
+										"9{{landsLordID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
